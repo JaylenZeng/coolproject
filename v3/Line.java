@@ -15,6 +15,10 @@ public class Line{
         return content;
     }
 
+    public void editText(char c ) {
+        content += c;
+    }
+
     public void setLink(int linkIndex) {
         this.linkIndex = linkIndex;
     }

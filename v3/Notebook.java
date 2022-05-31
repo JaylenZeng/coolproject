@@ -37,6 +37,10 @@ public class Notebook{
     public void setCursorPos(int pos) {
         cursorPos = pos;
     }
+
+    public ArrayList getNotebook() {
+        return notebook;
+    }
     
     public String toString() { // to be limited to n lines
         String ret = title+"\n";

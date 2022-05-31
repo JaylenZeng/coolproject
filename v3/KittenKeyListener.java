@@ -1,18 +1,21 @@
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 public class KittenKeyListener implements KeyListener {
     Notebook nb;
     String contents = "";
+    ArrayList<Line> notebook;
     
     public KittenKeyListener(Notebook n) {
         nb = n;
+        notebook = nb.getNotebook();
     }
     
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-            nb.writeLine(contents);
-            refreshContents();
+            nb.writeLine("");
+            //refreshContents();
         }
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
             nb.setCursorPos(nb.getCursorPos() + 1);
@@ -41,7 +44,9 @@ public class KittenKeyListener implements KeyListener {
 
     }
     public void keyTyped(KeyEvent e) {
-        contents += e.getKeyChar();
+        Line current = notebook.get(nb.getCursorPos()-1);
+        current.editText(e.getKeyChar());
+        notebook.set(nb.getCursorPos(), current);
     }
 
     public Notebook returnNotebook() {
@@ -51,4 +56,6 @@ public class KittenKeyListener implements KeyListener {
     public void refreshContents() {
         contents = "";
     }
+
+    
 }
