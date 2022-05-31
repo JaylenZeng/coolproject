@@ -3,7 +3,6 @@ import java.awt.event.KeyListener;
 
 public class KittenKeyListener implements KeyListener {
     Notebook nb;
-    String contents = "";
     
     public KittenKeyListener(Notebook n) {
         nb = n;
@@ -11,14 +10,22 @@ public class KittenKeyListener implements KeyListener {
     
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-            nb.writeLine(contents);
-            refreshContents();
+            nb.writeLine("");
         }
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            nb.setCursorPos(nb.getCursorPos() + 1);
+            nb.moveCursor(-1,0);
         }
         if (e.getKeyCode() == KeyEvent.VK_UP) {
-            nb.setCursorPos(nb.getCursorPos() - 1);
+            nb.moveCursor(1,0);
+        }
+        if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+            nb.moveCursor(0,-1);
+        }
+        if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            nb.moveCursor(0,1);
+        }
+        if (e.getKeyCode() == KeyEvent.VK_A) {
+            return;
         }
         
         //(IMPLEMENTING LATER)
@@ -38,17 +45,14 @@ public class KittenKeyListener implements KeyListener {
         
     }
     public void keyReleased(KeyEvent e) {
-
+        return;
     }
     public void keyTyped(KeyEvent e) {
-        contents += e.getKeyChar();
+        return;
     }
 
     public Notebook returnNotebook() {
         return nb;
     }
 
-    public void refreshContents() {
-        contents = "";
-    }
 }
