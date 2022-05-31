@@ -1,6 +1,4 @@
 import java.util.Scanner;
-import java.awt.Frame;
-import java.awt.Label;
 
 public class Woo {
 
