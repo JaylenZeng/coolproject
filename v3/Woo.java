@@ -4,7 +4,7 @@ import java.awt.Label;
 
 public class Woo {
 
-    private static void clearScreen() {
+    public static void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
@@ -20,14 +20,15 @@ public class Woo {
         
         //Scanner in = new Scanner(System.in);
         Notebook nb = new Notebook("testing 123");
-        KittenKeyListener k = new KittenKeyListener(nb);
-        f.addKeyListener(k);
+        KittenKeyListener keyListener = new KittenKeyListener(nb);
+            nb = keyListener.returnNotebook(); //applies all changes made by KeyListener
+            nb = keyListener.returnNotebook(); //applies all changes made by KeyListener
+            f.addKeyListener(keyListener);
         
         while (true) {
             clearScreen();
             System.out.print(nb);
             //nb.writeLine(in.nextLine())
-            nb = k.returnNotebook(); //applies all changes made by KeyListener
         }
         // in.close();
     }

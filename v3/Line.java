@@ -26,4 +26,12 @@ public class Line{
     public int getLinkIndex() {
         return linkIndex;
     }
+
+    public String previewChar(int index, String character) {
+        return content.substring(0,index) + character + content.substring(index);
+    }
+
+    public void insertChar(int index, String character) {
+        content = previewChar(index, character);
+    }
 }
