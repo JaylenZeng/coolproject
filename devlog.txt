@@ -75,7 +75,7 @@ Jaylen :: Initialized repo, README and devlog
 
 2022-05-26
 --------------------------------------------------------------
-Kittens - 1 :: Work on proposal
+Kittens (IAJ) :: Work on proposal
 changed the project from go to a interactive notebook
 Kittens :: completed proposal
 Ivina :: update team flag
@@ -84,10 +84,16 @@ Jaylen :: update README
 
 2022-05-27 --> 2022-05-30 
 --------------------------------------------------------------
-Kittens - 2 :: UML Diagrams
+Kittens (IA) :: UML Diagrams
 Jaylen :: implement KeyListener
-Anthony :: modifiy ToString
+Anthony :: modify toString
 --------------------------------------------------------------
 
+2022-05-31
+--------------------------------------------------------------
+Kitten (IA) :: Flowchart
+Jaylen :: resolve flickering
+Anthony :: start unit testing for methods
+--------------------------------------------------------------
 
 ==============================================================
