@@ -15,7 +15,6 @@ public class Woo {
         Frame f = new Frame("test");
         f.setSize(200,200);
         Label l = new Label();
-        l.setFont(new Font("Serif", Font.PLAIN, 18));
         l.setText("KTNBK");
         f.add(l);
         f.setVisible(true);
@@ -26,9 +25,11 @@ public class Woo {
             nb = keyListener.returnNotebook(); //applies all changes made by KeyListener
             f.addKeyListener(keyListener);
         
+        int tmpctr=0;
         while (true) {
             if (nb.changed()) {
                 clearScreen();
+                System.out.println("changed!" + ++tmpctr);
                 System.out.print(nb);
                 // nb.writeLine(in.nextLine());
 

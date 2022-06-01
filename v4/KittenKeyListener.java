@@ -26,7 +26,7 @@ public class KittenKeyListener implements KeyListener {
             nb.moveCursor(0,1);
         }
         if (e.getKeyCode() == KeyEvent.VK_A) {
-            return;
+            nb.type("a");
         }
         
         //(IMPLEMENTING LATER)
