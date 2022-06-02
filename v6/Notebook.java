@@ -4,12 +4,12 @@ public class Notebook {
     public ArrayList<Line> nbAL;
     String title;
     public int[] cursorPos;
-    int radius;
+    public int radius;
 
     public Notebook() {
         nbAL = new ArrayList<Line>();
         nbAL.add(new Line(""));
-        title = "Untitled Notebook";
+        title = "Untitled Notebook"+"\n";
         cursorPos = new int[2];
         radius = 10;
     }
@@ -74,7 +74,7 @@ public class Notebook {
     }
 
     public String toString() {
-        String ret = title+"\n";
+        String ret = title;
         int[] bounds = justify(cursorPos[0], nbAL.size());
 
         for(int i = bounds[0]; i <= bounds[1]; i++) {

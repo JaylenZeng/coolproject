@@ -1,3 +1,4 @@
+
 public class Action {
 
     public static void clearScreen() {
@@ -43,5 +44,14 @@ public class Action {
     public static void type(char input, Notebook nb) {
         nb.nbAL.get(nb.cursorPos[0]).insertChar(nb.cursorPos[1], input);
         nb.cursorPos[1]++;
+    }
+
+    public static void invokeCommand(String cmd, Notebook nb) {
+        for (int i = 0; i < 2; i ++) {
+            for (int j = 0; j < cmd.length(); j++) {
+                Action.type(cmd.charAt(j), nb);
+            }
+        }
+        Woo.listener.refresh(); //debug
     }
 }

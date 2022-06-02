@@ -1,24 +1,29 @@
+import java.awt.Frame;
+
 public class Test {
 
+    public static void sleep(int secs) {
+        try {
+            Thread.sleep(secs*1000);
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    public static Frame f;
     public static void main(String[] args) {
-        Line l = new Line();
+        f = new Frame("KTNBK");
+        f.setSize(200,50);
+        f.setVisible(true);
 
-        l.insertChar(0,'a');
-        l.insertChar(1,'b');
-        l.insertChar(2,'c');
-        l.insertChar(3,'d');
-        l.insertChar(4,'e');
-        l.insertChar(5,'f');
-        l.backspace(6);
-        System.out.println(l);
-
-        l.backspace(4);
-        System.out.println(l);
-
-        l.backspace(3);
-
-        System.out.println(l);
+        Notebook nb = new Notebook("kit1"+"\n");
+        Action.clearScreen();
+        System.out.println(nb);
         
+        TestKeyListener listener = new TestKeyListener(f);
+        f.addKeyListener(listener);
+        System.out.println("yay!!!");
     }
 
 

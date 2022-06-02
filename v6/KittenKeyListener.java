@@ -6,6 +6,12 @@ public class KittenKeyListener implements KeyListener {
 
     public KittenKeyListener(Notebook nb) {
         this.nb = nb;
+        refresh();
+    }
+
+    public void refresh() {
+        Action.clearScreen();
+        System.out.println(nb);
     }
 
     @Override
@@ -23,11 +29,11 @@ public class KittenKeyListener implements KeyListener {
                 isUnicode = false;
             }
         }
+        if (!Woo.f.getKeyListeners()[0].equals(this)) return;
         if (e.getKeyChar() != KeyEvent.CHAR_UNDEFINED && isUnicode) {
             Action.type(e.getKeyChar(),nb);
         }
-        Action.clearScreen();
-        System.out.println(nb);
+        refresh();
         
 
 
