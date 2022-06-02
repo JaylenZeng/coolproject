@@ -15,11 +15,15 @@ public class KittenKeyListener implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
+        boolean isUnicode = true;
         int[] special = new int[]{17,37,38,39,40,10,8};
         for (int c : special) {
-            if (c==e.getKeyCode()) Action.process(c,nb);
+            if (c==e.getKeyCode()){
+                Action.process(c,nb);
+                isUnicode = false;
+            }
         }
-        if (e.getKeyChar() != '￿') {
+        if (e.getKeyChar() != KeyEvent.CHAR_UNDEFINED && isUnicode) {
             Action.type(e.getKeyChar(),nb);
         }
         Action.clearScreen();

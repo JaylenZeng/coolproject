@@ -48,17 +48,21 @@ public class Notebook {
     
     public void moveCursor(int dRow, int dCol) {
         int nRow = cursorPos[0] + dRow;
-        int nCol = cursorPos[1] + dCol;
         if (nRow >= height()) nRow = height()-1;
         if (nRow < 0) nRow = 0;
-        if (nCol >= currentWidth()) nCol = currentWidth();
+
+        int nCol = cursorPos[1] + dCol;
+        if (nCol >= width(nRow)) nCol = width(nRow);
         if (nCol < 0) nCol = 0;
 
         cursorPos = new int[]{nRow,nCol}; // modifying array directly works too
     }
 
     public void enter() {
-        
+        //doesn't work properly because extra line skipped. 
+        String nextLine = nbAL.get(cursorPos[0]).partition(cursorPos[1]);
+        nbAL.add(cursorPos[0]+1, new Line(nextLine));
+        moveCursor(1, -10000);
     }
 
     public String toString() {

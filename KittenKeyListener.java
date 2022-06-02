@@ -3,52 +3,40 @@ import java.awt.event.KeyListener;
 
 public class KittenKeyListener implements KeyListener {
     Notebook nb;
-    String contents = "";
-    
-    public KittenKeyListener(Notebook n) {
-        nb = n;
+
+    public KittenKeyListener(Notebook nb) {
+        this.nb = nb;
     }
-    
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        
+    }
+
+    @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-            nb.writeLine(contents);
-            refreshContents();
+        boolean isUnicode = true;
+        int[] special = new int[]{17,37,38,39,40,10,8};
+        for (int c : special) {
+            if (c==e.getKeyCode()){
+                Action.process(c,nb);
+                isUnicode = false;
+            }
         }
-        if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            nb.setCursorPos(nb.getCursorPos() + 1);
+        if (e.getKeyChar() != KeyEvent.CHAR_UNDEFINED && isUnicode) {
+            Action.type(e.getKeyChar(),nb);
         }
-        if (e.getKeyCode() == KeyEvent.VK_UP) {
-            nb.setCursorPos(nb.getCursorPos() - 1);
-        }
+        Action.clearScreen();
+        System.out.println(nb);
         
-        //(IMPLEMENTING LATER)
-        // if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-        
-        // }
-        // if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-        
-        // }
-        // if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
 
-        // }
-        // if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
 
-        // }
-        
         
     }
+
+    @Override
     public void keyReleased(KeyEvent e) {
 
     }
-    public void keyTyped(KeyEvent e) {
-        contents += e.getKeyChar();
-    }
-
-    public Notebook returnNotebook() {
-        return nb;
-    }
-
-    public void refreshContents() {
-        contents = "";
-    }
+    
 }

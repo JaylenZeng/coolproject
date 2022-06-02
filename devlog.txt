@@ -29,12 +29,12 @@ Flesh out each category whenever necessary, appropriate.
 ------------------------------------------
 OBSTACLES OVERCOME
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-wow we so BOSS bc...
+1. The program wouldn't run because we built on top of a lot of flawed code.
+2. The program was flickering, solved by updating just-in-time via KittenKeyListener
+3. We fixed issues with backspace and enter, as they are not undefined characters.
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-* KeyListener
-  * In order to input commands like in VIM, you would press ESC which would move your cursor to the bottom of the screen. How do??
 
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -42,11 +42,11 @@ wow! oo!...
 
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-we changed ___ to ___ bc...
+We changed our code from a integrated design where functionality was handled in Notebook.java to a design with a separate class wit h periodic calling (KittenKeyListener) and action based functionality.
 
 LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-tales of wisdom gained...
+Constructors are *not* run in static classes. oops.
 ||||||||||||||||||||||||||||||||||||||||||
 
 
@@ -94,6 +94,18 @@ Anthony :: modify toString
 Kitten (IA) :: Flowchart
 Jaylen :: resolve flickering
 Anthony :: start unit testing for methods
+--------------------------------------------------------------
+
+2022-06-01
+--------------------------------------------------------------
+Anthony :: rebuilt code, added Action and Command
+Jaylen :: updated README.md
+--------------------------------------------------------------
+
+2022-06-02
+--------------------------------------------------------------
+Kittens -M :: finished making basic notebook functionality, most importantly: backspace, enter
+fixed many. many. bugs.
 --------------------------------------------------------------
 
 ==============================================================

@@ -37,6 +37,16 @@ public class Line{
 
     }
 
+    public String partition(int cPos) {
+        String s = content.substring(cPos);
+        content = content.substring(0,cPos);
+        return s;
+    }
+
+    public boolean isEmpty() {
+        return content.length() == 0;
+    }
+
     public String toString() {
         return content;
     }

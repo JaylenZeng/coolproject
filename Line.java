@@ -1,25 +1,53 @@
 public class Line{
     String content;
-    int linkIndex;
+    // int linkIndex;
     
     public Line() {
         content = "";
-        linkIndex = 0;
+        // linkIndex = 0;
     }
     
     public Line(String content) {
+        this();
         this.content = content;
     }
 
-    public String getText() {
+    // public void setLink(int linkIndex) {
+    //     this.linkIndex = linkIndex;
+    // }
+
+    // public int getLinkIndex() {
+    //     return linkIndex;
+    // }
+    
+    public String previewChar(int index, char character) { // tested
+        return content.substring(0,index) + (""+character) + content.substring(index);
+    }
+
+    public void insertChar(int index, char character) { // tested
+        content = previewChar(index, character);
+    }
+
+    public void backspace(int index) { // tested; removes char2 at index-1
+        // String add = "";
+        // if (index < content.length()) add = content.substring(index);
+        // content = content.substring(0,index-1) + add;
+
+        content = content.substring(0,index-1) + content.substring(index);
+
+    }
+
+    public String partition(int cPos) {
+        String s = content.substring(cPos);
+        content = content.substring(0,cPos);
+        return s;
+    }
+
+    public boolean isEmpty() {
+        return content.length() == 0;
+    }
+
+    public String toString() {
         return content;
-    }
-
-    public void setLink(int linkIndex) {
-        this.linkIndex = linkIndex;
-    }
-
-    public int getLinkIndex() {
-        return linkIndex;
     }
 }
