@@ -4,17 +4,23 @@ public class Notebook {
     public ArrayList<Line> nbAL;
     String title;
     public int[] cursorPos;
+    int radius;
 
     public Notebook() {
         nbAL = new ArrayList<Line>();
         nbAL.add(new Line(""));
         title = "Untitled Notebook";
         cursorPos = new int[2];
+        radius = 10;
     }
 
     public Notebook(String title) {
         this();
         this.title = title;
+    }
+
+    public void setRadius(int rad) {
+        radius = rad;
     }
 
     public Line getCurrentLine() {
@@ -33,16 +39,18 @@ public class Notebook {
         return width(cursorPos[0]);
     }
 
-    public int[] justify(int pos, int maxIndex, int radius) { // tested
+    public int[] justify(int pos, int maxIndex) { // tested
         maxIndex--;
         int lowbound = pos-radius;
         int highbound = pos+radius;
+        if (lowbound < 0) {
+            lowbound = 0;
+            highbound += radius-pos;
+        }
         if (highbound > maxIndex) {
             highbound = maxIndex;
         }
-        if (lowbound < 0) {
-            lowbound = 0;
-        }
+
         return new int[]{lowbound,highbound};
     }
     
@@ -67,7 +75,7 @@ public class Notebook {
 
     public String toString() {
         String ret = title+"\n";
-        int[] bounds = justify(cursorPos[0], nbAL.size(), 10);
+        int[] bounds = justify(cursorPos[0], nbAL.size());
 
         for(int i = bounds[0]; i <= bounds[1]; i++) {
         // for (int i = 0; i < nbAL.size(); i++) {

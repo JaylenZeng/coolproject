@@ -3,3 +3,8 @@ public class Command {
 
     }
 }
+// number lines
+// set radius
+// del line
+// disp help in jframe
+// set terminal cursor pos?
