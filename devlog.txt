@@ -8,11 +8,6 @@ pd 7
 KTNBK :: Interactive notebook for notes and computations
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-USAGE:
-* Replace all fields, angle brackets included, with specified info.
-  eg, pd <pd#> --> pd 3
-* Delete this instruction block once all teammates understand usage.
-
 devlog--
 Use keyboard shortcut to jump to end,
  replicate entry template,
@@ -38,7 +33,8 @@ UNRESOLVED ISSUES
 
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-wow! oo!...
+* KeyListener operates as a periodic function, meaning that if you have another period operation like a while loop, it steals the thread from KeyListener.
+
 
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -100,12 +96,17 @@ Anthony :: start unit testing for methods
 --------------------------------------------------------------
 Anthony :: rebuilt code, added Action and Command
 Jaylen :: updated README.md
+Kittens -M :: finished making basic notebook functionality, most importantly: backspace, enter
+fixed many. many. bugs.
 --------------------------------------------------------------
 
 2022-06-02
 --------------------------------------------------------------
-Kittens -M :: finished making basic notebook functionality, most importantly: backspace, enter
-fixed many. many. bugs.
+Kittens: spent class time working to start on prompting for commands
+Anthony: created CmdKeyListener and finished prompting for commands
+* bugs to fix/things to implement:
+	* undo changes to justify
+	* word wrap
 --------------------------------------------------------------
 
 ==============================================================
