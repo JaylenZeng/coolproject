@@ -13,17 +13,10 @@ public class Test {
 
     public static Frame f;
     public static void main(String[] args) {
-        f = new Frame("KTNBK");
-        f.setSize(200,50);
-        f.setVisible(true);
-
-        Notebook nb = new Notebook("kit1"+"\n");
-        Action.clearScreen();
-        System.out.println(nb);
-        
-        TestKeyListener listener = new TestKeyListener(f);
-        f.addKeyListener(listener);
-        System.out.println("yay!!!");
+        Line a = new Line();
+        a.insertString(0, "hello");
+        a.insertString(5, "ivi");
+        System.out.println(a);
     }
 
 

@@ -12,6 +12,7 @@ public class KittenKeyListener implements KeyListener {
     public void refresh() {
         Action.clearScreen();
         System.out.println(nb);
+        System.out.println(nb.cursorPos[0]+", "+nb.cursorPos[1]);
     }
 
     @Override
@@ -33,11 +34,7 @@ public class KittenKeyListener implements KeyListener {
         if (e.getKeyChar() != KeyEvent.CHAR_UNDEFINED && isUnicode) {
             Action.type(e.getKeyChar(),nb);
         }
-        refresh();
-        
-
-
-        
+        refresh(); 
     }
 
     @Override

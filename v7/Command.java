@@ -7,7 +7,6 @@ public class Command {
         Woo.f.removeKeyListener(Woo.listener);
 
         Woo.f.addKeyListener(cmdKey);
-
     }
 }
 // number lines

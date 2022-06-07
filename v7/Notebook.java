@@ -24,7 +24,11 @@ public class Notebook {
     }
 
     public Line getCurrentLine() {
-        return nbAL.get(cursorPos[0]);
+        return getLine(cursorPos[0]);
+    }
+
+    public Line getLine(int index) {
+        return nbAL.get(index);
     }
 
     public int height() {
@@ -67,7 +71,6 @@ public class Notebook {
     }
 
     public void enter() {
-        //doesn't work properly because extra line skipped. 
         String nextLine = nbAL.get(cursorPos[0]).partition(cursorPos[1]);
         nbAL.add(cursorPos[0]+1, new Line(nextLine));
         moveCursor(1, -10000);

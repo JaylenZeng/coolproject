@@ -28,6 +28,10 @@ public class Line{
         content = previewChar(index, character);
     }
 
+    public void insertString(int index, String s) {
+        content = content.substring(0, index) + s + content.substring(index);
+    }
+
     public void backspace(int index) { // tested; removes char2 at index-1
         // String add = "";
         // if (index < content.length()) add = content.substring(index);
@@ -45,6 +49,10 @@ public class Line{
 
     public boolean isEmpty() {
         return content.length() == 0;
+    }
+
+    public int length() {
+        return content.length();
     }
 
     public String toString() {

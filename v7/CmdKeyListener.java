@@ -59,10 +59,6 @@ public class CmdKeyListener implements KeyListener {
         }
         
         refresh();
-        
-
-
-        
     }
 
     @Override
