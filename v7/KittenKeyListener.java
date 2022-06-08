@@ -13,6 +13,8 @@ public class KittenKeyListener implements KeyListener {
         Action.clearScreen();
         System.out.println(nb);
         System.out.println(nb.cursorPos[0]+", "+nb.cursorPos[1]);
+        System.out.println(nb.currentWidth());
+        System.out.println(nb.cursorPos[1] == nb.currentWidth());
     }
 
     @Override
@@ -32,7 +34,7 @@ public class KittenKeyListener implements KeyListener {
         }
         if (!Woo.f.getKeyListeners()[0].equals(this)) return;
         if (e.getKeyChar() != KeyEvent.CHAR_UNDEFINED && isUnicode) {
-            Action.type(e.getKeyChar(),nb);
+            Action.type(e.getKeyChar(),nb,80);
         }
         refresh(); 
     }
