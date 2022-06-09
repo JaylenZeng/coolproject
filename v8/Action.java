@@ -45,30 +45,29 @@ public class Action {
     }
 
 
-    public static void wrap (Notebook nb) {
-        //in short, this version of wrap iterates through every line of the Notebook. If that line surpasses the lineLength, it fixes it. 
-        for (int i = 0; i < nb.height(); i++) {
-            boolean hasAddLine = false; //fixes cursorPos issue
-            if (nb.getLine(i).length() > Params.lineLength) {
-                //isolates extra characters
-                int overflow = nb.currentWidth()-Params.lineLength; //number of characters surpassing lineLength
-                String extra = nb.getLine(i).partition(nb.currentWidth() - overflow); //stores those characters
+    // public static void wrap (Notebook nb) {
+    //     //in short, this version of wrap iterates through every line of the Notebook. If that line surpasses the lineLength, it fixes it. 
+    //     for (int i = 0; i < nb.height(); i++) {
+    //         if (nb.getLine(i).length() > Params.lineLength) {
+    //             //isolates extra characters
+    //             int overflow = nb.currentWidth()-Params.lineLength; //number of characters surpassing lineLength
+    //             String extra = nb.getLine(i).partition(nb.currentWidth() - overflow); //stores those characters
                 
-                //checks if we need to add a new line
-                if (i == nb.height() -1 ) {
-                    hasAddLine = true;
-                    nb.nbAL.add(i+1, new Line());
-                    nb.moveCursor(1, -10000);
-                    nb.cursorPos[1] = 1;
-                }
+    //             //checks if we need to add a new line
+    //             if (i == nb.height() -1 ) {
+    //                 nb.nbAL.add(i+1, new Line());
+    //                 nb.moveCursor(1, -10000);
+    //                 nb.cursorPos[1] = 1;
+    //                 if (nb.cursorPos[1] > nb.currentWidth()) { 
+    //                     nb.moveCursor(1, -10000);
+    //                 }
+    //             }
 
-                if (nb.cursorPos[1] > nb.currentWidth() && !hasAddLine) { //handles case where user is typing at the end of a line but next line exists. 
-                    nb.moveCursor(1, -10000);
-                }
-                nb.getLine(i + 1).insertString(0, extra); //inserts extra characters
-            }
-        }
-    }
+
+    //             nb.getLine(i + 1).insertString(0, extra); //inserts extra characters
+    //         }
+    //     }
+    // }
 
 
     public static void type(char input, Notebook nb) {

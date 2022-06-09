@@ -47,6 +47,11 @@ public class Line{
         return s;
     }
 
+    public String peek(int begin, int end) {
+        if (end > length()) return content.substring(begin);
+        return content.substring(begin,end);
+    }
+
     public boolean isEmpty() {
         return content.length() == 0;
     }

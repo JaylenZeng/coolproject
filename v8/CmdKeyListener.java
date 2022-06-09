@@ -47,7 +47,7 @@ public class CmdKeyListener implements KeyListener {
         }
 
         boolean isUnicode = true;
-        int[] special = new int[]{37,38,39,40,8};
+        int[] special = new int[]{37,39,8};
         for (int c : special) {
             if (c==e.getKeyCode()){
                 Action.process(c,nb2);

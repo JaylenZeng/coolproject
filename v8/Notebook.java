@@ -81,11 +81,16 @@ public class Notebook {
         int[] bounds = justify(cursorPos[0], nbAL.size());
 
         for(int i = bounds[0]; i <= bounds[1]; i++) {
-        // for (int i = 0; i < nbAL.size(); i++) {
+            Line inserted;
             if (i == cursorPos[0]) {
-                ret+= nbAL.get(i).previewChar(cursorPos[1], '|')+"\n";
+                inserted = new Line(getLine(i).previewChar(cursorPos[1], '|')); // this can be string if we move peek() to somewhere else or make it static
             }
-            else ret+=nbAL.get(i).toString()+"\n";
+            else {
+                inserted = new Line(getLine(i).toString());
+            }
+            for (int j = 0; j < getLine(i).length() / Params.lineLength + 1; j++) {
+                ret += inserted.peek(j*Params.lineLength, (j+1)*Params.lineLength)+"\n";
+            }
         }
         return ret.substring(0,ret.length());
     }
