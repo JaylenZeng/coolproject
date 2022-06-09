@@ -55,7 +55,7 @@ public class CmdKeyListener implements KeyListener {
             }
         }
         if (e.getKeyChar() != KeyEvent.CHAR_UNDEFINED && isUnicode) {
-            Action.type(e.getKeyChar(),nb2, 80);
+            Action.type(e.getKeyChar(),nb2);
         }
         
         refresh();

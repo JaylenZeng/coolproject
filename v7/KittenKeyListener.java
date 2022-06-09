@@ -34,7 +34,7 @@ public class KittenKeyListener implements KeyListener {
         }
         if (!Woo.f.getKeyListeners()[0].equals(this)) return;
         if (e.getKeyChar() != KeyEvent.CHAR_UNDEFINED && isUnicode) {
-            Action.type(e.getKeyChar(),nb,80);
+            Action.type(e.getKeyChar(),nb);
         }
         refresh(); 
     }
