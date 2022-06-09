@@ -45,35 +45,35 @@ public class Action {
     }
 
 
-    public static void wrap (int lineNum, Notebook nb) {
-        Line currentLine = nb.getLine(lineNum);
-        if (currentLine.length() <= Params.lineLength) return;
-        String extra = nb.getLine(lineNum).partition(nb.currentWidth()-1);
-        
-        if (nb.getLine(nb.cursorPos[0]+1).length() == Params.lineLength) {  
-            nb.nbAL.add(new Line());
-            nb.moveCursor(1, 0);
+    public static void wrap (Notebook nb) {
+        //in short, this version of wrap iterates through every line of the Notebook. If that line surpasses the lineLength, it fixes it. 
+        for (int i = 0; i < nb.height(); i++) {
+            boolean hasAddLine = false; //fixes cursorPos issue
+            if (nb.getLine(i).length() > Params.lineLength) {
+                //isolates extra characters
+                int overflow = nb.currentWidth()-Params.lineLength; //number of characters surpassing lineLength
+                String extra = nb.getLine(i).partition(nb.currentWidth() - overflow); //stores those characters
+                
+                //checks if we need to add a new line
+                if (i == nb.height() -1 ) {
+                    hasAddLine = true;
+                    nb.nbAL.add(i+1, new Line());
+                    nb.moveCursor(1, -10000);
+                    nb.cursorPos[1] = 1;
+                }
+
+                if (nb.cursorPos[1] > nb.currentWidth() && !hasAddLine) { //handles case where user is typing at the end of a line but next line exists. 
+                    nb.moveCursor(1, -10000);
+                }
+                nb.getLine(i + 1).insertString(0, extra); //inserts extra characters
+            }
         }
-        nb.getLine(lineNum + 1).insertChar(0, extra.charAt(0));
-
-            nb.moveCursor(1, -10000);
-        
-        // else {
-        //     nb.moveCursor(0, 1); created weird bugs where cursor would move two spaces in specific cases. Fixed this issue by moving cursor in type method.
-        // }
-        wrap(lineNum+1, nb);
-
     }
+
 
     public static void type(char input, Notebook nb) {
         nb.nbAL.get(nb.cursorPos[0]).insertChar(nb.cursorPos[1], input);
-        Params.lineLength=20;
-        if (nb.getCurrentLine().length() > Params.lineLength-1) {
-            wrap(nb.cursorPos[0], nb);
-        }
         nb.moveCursor(0, 1);
-
-        // i put moveCursor in the if statement so it will only do it once no matter what. 
     }
 
     public static void invokeCommand(String cmd, Notebook nb) {
