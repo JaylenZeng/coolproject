@@ -34,7 +34,7 @@ public class Command
     public static void help() {
         clear();
         if (!helpEnabled) {
-            l = new JLabel("<html>help - displays all commands/closes screen<br/>clear - deletes all lines on notebook<br/>radius (n) - sets radius to n<br/>width (n) - sets max line length to n<br/>cat - DO IT<br/>count - returns total number of characters<br/>num - numbers each line<br/>eol - sets cursor at the end of the line<br/>save (file name) - saves notebook in files folder. <br/></html>");
+            l = new JLabel("<html>help - displays all commands/closes screen<br/>clear - deletes all lines on notebook<br/>radius <n> - sets radius to n<br/>width <n> - sets max line length to n<br/>cat - DO IT<br/>count - returns total number of characters<br/>num - numbers each line<br/>eol - sets cursor at the end of the line<br/>save [filename] - saves notebook in files folder. <br/></html>");
             p = new JPanel();
             l.setFont(new Font("Comic Sans MS", 0, 12));
             l.setForeground(Color.BLUE);
@@ -47,10 +47,6 @@ public class Command
             Woo.f.setSize(250, 0);
         }
         helpEnabled = !helpEnabled;
-    }
-    
-    public static void clear(Notebook nb) {
-        nb = new Notebook(nb.getTitle());
     }
     
     public static void radius(int radius) {
@@ -78,7 +74,7 @@ public class Command
     }
     
     public static void save(Notebook nb) {
-        save(LocalDateTime.now().format(DateTimeFormatter.ofPattern("MM-dd--HH-mm-ss")), nb);
+        save(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd--HH-mm-ss")), nb);
     }
     
     public static void save(String s, Notebook nb) {
@@ -94,6 +90,22 @@ public class Command
         catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
+
+    public static void coin(Notebook nb){
+        nb.enter();
+        String s;
+        if (Math.random() >= .5) {
+            s="heads";
+        } else {
+            s="tails";
+        }
+        for (int i = 0; i < s.length(); i++){
+            Action.type(s.charAt(i), nb);
+        }
+        Woo.listener.refresh();
+
+
     }
     
     public static void cat() {

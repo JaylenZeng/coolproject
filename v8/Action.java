@@ -50,9 +50,6 @@ public class Action
         if (cmd.equals("help")) {
             Command.help();
         }
-        if (cmd.equals("clear")) {
-            Command.clear(nb);
-        }
         if (cmd.indexOf("radius") != -1) {
             if (cmd.length() == 6) {
                 Command.radius(10);
@@ -89,6 +86,8 @@ public class Action
                 Command.save(cmd.substring(cmd.indexOf(" ") + 1), nb);
             }
         }
-        Woo.listener.refresh();
+        if(cmd.indexOf("coin") != -1){
+            Command.coin(nb);
+        }
     }
 }

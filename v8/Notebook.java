@@ -9,7 +9,6 @@ public class Notebook
     
     public Notebook() {
         nbAL = new ArrayList<Line>();
-        nbAL.add(new Line(""));
         title = "Untitled Notebook";
         cursorPos = new int[2];
         primary = true;
