@@ -27,6 +27,7 @@ OBSTACLES OVERCOME
 1. The program wouldn't run because we built on top of a lot of flawed code.
 2. The program was flickering, solved by updating just-in-time via KittenKeyListener
 3. We fixed issues with backspace and enter, as they are not undefined characters.
+4. VS Code somehow crashed, leaving us with hours-old code. We were extremely fortunate to have not recompiled, and used an online decompiler to restore the code. It still came with artifacts from the compiler such as "final", "this" keywords and parameters like "n" and "n1", but we were able to fix it in an hour instead of many more.
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -34,15 +35,17 @@ UNRESOLVED ISSUES
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * KeyListener operates as a periodic function, meaning that if you have another period operation like a while loop, it steals the thread from KeyListener.
-
+* We learned the basics of Swing components.
 
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 We changed our code from a integrated design where functionality was handled in Notebook.java to a design with a separate class wit h periodic calling (KittenKeyListener) and action based functionality.
+We also scrapped a line-by-line line wrap in favor of one that's similar to vim, having lines be strictly separated by newlines.
 
 LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Constructors are *not* run in static classes. oops.
+* Constructors are *not* run in static classes. oops.
+* Commit. Often. Or VS Code will give you acute anxiety.
 ||||||||||||||||||||||||||||||||||||||||||
 
 
