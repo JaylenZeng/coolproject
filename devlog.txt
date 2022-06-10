@@ -96,14 +96,15 @@ Anthony :: start unit testing for methods
 --------------------------------------------------------------
 Anthony :: rebuilt code, added Action and Command
 Jaylen :: updated README.md
-Kittens -M :: finished making basic notebook functionality, most importantly: backspace, enter
-fixed many. many. bugs.
+Kittens -M :: finished making basic notebook functionality, 
+	  most importantly: backspace, enter
+	  fixed many. many. bugs.
 --------------------------------------------------------------
 
 2022-06-02
 --------------------------------------------------------------
-Kittens: spent class time working to start on prompting for commands
-Anthony: created CmdKeyListener and finished prompting for commands
+Kittens :: spent class time working to start on prompting for commands
+Anthony :: created CmdKeyListener and finished prompting for commands
 * bugs to fix/things to implement:
 	* undo changes to justify
 	* word wrap
@@ -111,8 +112,14 @@ Anthony: created CmdKeyListener and finished prompting for commands
 
 2022-06-07
 --------------------------------------------------------------
-Kittens: fixed Backspace bug. Making slow progress in word wrap.
+Kittens :: fixed Backspace bug. Making slow progress in word wrap.
+--------------------------------------------------------------
 
+2022-06-10
+--------------------------------------------------------------
+Kittens :: added commands (help, clear, radius, width, num, count, eol, save, coin, cat)
+	   (Notebook.java) changed justify to bounds
+	   bug extermination
 --------------------------------------------------------------
 
 ==============================================================
