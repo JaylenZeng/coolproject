@@ -43,7 +43,7 @@ public class Command
             p.setLayout(new FlowLayout());
             p.add(l);
             Woo.f.add(p);
-            Woo.f.setSize(400, 400);
+            Woo.f.setSize(450, 250);
         }
         else {
             Woo.f.setSize(250, 0);
@@ -61,6 +61,7 @@ public class Command
     
     public static void num() {
         Params.dispLineNum = !Params.dispLineNum;
+        Woo.listener.refresh();
     }
     
     public static int count(Notebook nb) {
@@ -116,7 +117,7 @@ public class Command
         Command.c = new JLabel("<html><pre>      |\\      _,,,---,,_<br>ZZZzz /,`.-'`'    -.  ;-;;,_<br>     |,4-  ) )-,_. ,\\ (  `'-'<br>    '---''(_/--'  `-'\\_)</pre></html>");
         (Command.p = new JPanel()).add(Command.c);
         Woo.f.add(Command.p);
-        Woo.f.setSize(250, 200);
+        Woo.f.setSize(250, 150);
     }
 
     public static void sort(Notebook nb, String dir) {
