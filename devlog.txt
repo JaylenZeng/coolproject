@@ -118,11 +118,14 @@ Anthony :: created CmdKeyListener and finished prompting for commands
 Kittens :: fixed Backspace bug. Making slow progress in word wrap.
 --------------------------------------------------------------
 
-2022-06-10
+2022-06-09
 --------------------------------------------------------------
 Kittens :: added commands (help, clear, radius, width, num, count, eol, save, coin, cat)
 	   (Notebook.java) changed justify to bounds
 	   bug extermination
 --------------------------------------------------------------
 
+2022-06-10
+--------------------------------------------------------------
+Anthony :: added v9, made sort command
 ==============================================================

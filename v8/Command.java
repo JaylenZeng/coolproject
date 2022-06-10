@@ -2,6 +2,8 @@ import java.io.IOException;
 import java.io.FileWriter;
 import java.io.File;
 import java.time.format.DateTimeFormatter;
+import java.util.Comparator;
+import java.util.PriorityQueue;
 import java.time.LocalDateTime;
 import java.awt.FlowLayout;
 import java.awt.Color;
@@ -114,5 +116,86 @@ public class Command
         (Command.p = new JPanel()).add(Command.c);
         Woo.f.add(Command.p);
         Woo.f.setSize(250, 200);
+    }
+
+    public static void sort(Notebook nb, String dir) {
+        String curLine = nb.getCurrentLine().toString();
+        String[] elements = curLine.split("[\\s,]+");
+
+        PriorityQueue<String> alphabet;
+        PriorityQueue<Integer> numerical;
+        if (dir.equals("min")) {
+            alphabet = new PriorityQueue<String>(new Comparator<String>() {
+                public int compare(String one, String two) {
+                    String[] a = one.toLowerCase().split("");
+                    String[] b = two.toLowerCase().split("");
+
+                    for (int i = 0; i < Math.min(a.length, b.length); i++) {
+                        if ((int) a[i].charAt(0) < (int) b[i].charAt(0)) return -1;
+                        if ((int) a[i].charAt(0) > (int) b[i].charAt(0)) return 1;
+                    }
+                    if (b.length < a.length) return -1;
+                    return 1; 
+                }
+            });
+            numerical = new PriorityQueue<>();
+        }
+        else {
+            alphabet = new PriorityQueue<>(new Comparator<String>() {
+                public int compare(String two, String one) {
+                    String[] a = one.toLowerCase().split("");
+                    String[] b = two.toLowerCase().split("");
+
+                    for (int i = 0; i < Math.min(a.length, b.length); i++) {
+                        if ((int) a[i].charAt(0) < (int) b[i].charAt(0)) return -1;
+                        if ((int) a[i].charAt(0) > (int) b[i].charAt(0)) return 1;
+                    }
+                    if (b.length < a.length) return -1;
+                    return 1; 
+                }
+            });
+            numerical = new PriorityQueue<>(Comparator.reverseOrder());
+        }
+
+        int numLength = 0;
+        int alphaLength = 0;
+        for (String element : elements) {
+            int firstChar = (int) element.toLowerCase().charAt(0);
+            if (firstChar >= 48 && firstChar <=57) {
+                numerical.add(Integer.parseInt(element));
+                numLength++;
+                
+            }
+            if (firstChar >= 97 && firstChar <=122) {
+                alphabet.add(element);
+                alphaLength++;
+            }
+        }
+        nb.enter();
+
+
+        for (int i = 0; i < alphaLength; i++) {
+            String a="";
+            for (String character : alphabet) {
+                a = character;
+                break;
+            }
+            Action.typeString(a, nb);
+            Action.type(' ', nb);
+            alphabet.remove(a);
+        }
+
+        for (int i = 0; i < numLength; i++) {
+            int a=0;
+            for (int num : numerical) {
+                a=num;
+                break;
+            }
+            Action.typeString(a+"", nb);
+            Action.type(' ', nb);
+            numerical.remove(a);
+        }
+        Woo.listener.refresh();
+
     }
 }
