@@ -101,5 +101,6 @@ public class Action
                 Command.sort(nb, cmd.substring(cmd.indexOf(" ")+1));
             }
         }
+        Woo.listener.refresh();
     }
 }

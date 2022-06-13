@@ -61,7 +61,6 @@ public class Command
     
     public static void num() {
         Params.dispLineNum = !Params.dispLineNum;
-        Woo.listener.refresh();
     }
     
     public static int count(Notebook nb) {
@@ -107,7 +106,6 @@ public class Command
         for (int i = 0; i < s.length(); i++){
             Action.type(s.charAt(i), nb);
         }
-        Woo.listener.refresh();
 
 
     }
@@ -199,7 +197,6 @@ public class Command
             numerical.remove(a);
         }
 
-        Woo.listener.refresh();
 
     }
 }
